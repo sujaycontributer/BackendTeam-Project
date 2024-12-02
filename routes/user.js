@@ -7,6 +7,10 @@ const {upload}  = require('../controllers/diskStorage');
 const userRouter = Router();
 
 
+userRouter.get('/', (req,res) => {
+    res.sendFile(__dirname + '/index.html');
+})
+
 userRouter.post('/signup', async (req, res) => {
     const URLandPassword = req.body;
     const userFormat = z.object({
@@ -58,8 +62,9 @@ userRouter.post('/signin', async (req, res) => {
 userRouter.post('/profile', upload.single('avatar'), function (req, res, cb){
   
     // console.log(req.body);
-    // const file = req.file;
+    const file = req.file;
     // console.log(file.path);
+
   
   });
 
